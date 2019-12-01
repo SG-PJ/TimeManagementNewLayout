@@ -1,0 +1,18 @@
+<resources>
+    <string name="app_name">TimeManagementNewLayout</string>
+    <string name="title_home">ホーム</string>
+    <string name="title_today">本日</string>
+    <string name="title_calendar">カレンダー</string>
+    <string name="title_setting">設定</string>
+    <string name="checkResiduePaidHolidays">有給</string>
+    <string name="checkCompensatoryDayOff">代休</string>
+    <string name="btnLogin">login</string>
+    <string name="dispResiduePaidHolidays">有給休暇</string>
+    <string name="dispStartTimeToday">出社時刻</string>
+    <string name="dispEndTimeToday">退社時刻</string>
+    <string name="dispWorkTimeStart">開始時間</string>
+    <string name="dispWorkTimeEnd">終了時間</string>
+    <string name="dispWorkTimeTotal">合計時間</string>
+    <string name="dispEmail">E-mail</string>
+    <string name="dispPassword">PassWord</string>
+</resources>

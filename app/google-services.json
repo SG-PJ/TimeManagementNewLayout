@@ -1,0 +1,77 @@
+{
+  "project_info": {
+    "project_number": "46149541573",
+    "firebase_url": "https://timemanagement-48a3d.firebaseio.com",
+    "project_id": "timemanagement-48a3d",
+    "storage_bucket": "timemanagement-48a3d.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46149541573:android:d0399cce36e4cd6c",
+        "android_client_info": {
+          "package_name": "com.example.timemanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46149541573-3hf8ad7vvbmnml32dcao0m1anbv2rrr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADdyutm5xfheSEp8AGHiXDt3aEjF1Iwb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46149541573-3hf8ad7vvbmnml32dcao0m1anbv2rrr4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46149541573:android:907637febd0d48e0a31aac",
+        "android_client_info": {
+          "package_name": "jp.vipsoft.timemanagement"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "46149541573-53m4jtjfekh0p3p2mv3h7meud247p76r.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "jp.vipsoft.timemanagement",
+            "certificate_hash": "a1bfc1f378c9077469b93126e2e5cc8905ec6c8c"
+          }
+        },
+        {
+          "client_id": "46149541573-3hf8ad7vvbmnml32dcao0m1anbv2rrr4.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyADdyutm5xfheSEp8AGHiXDt3aEjF1Iwb0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "46149541573-3hf8ad7vvbmnml32dcao0m1anbv2rrr4.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

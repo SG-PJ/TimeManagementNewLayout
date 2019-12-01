@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <include layout="@layout/activity_date" android:id="@+id/date_today_fragment"/>
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="140dp"
+        android:layout_height="18dp"
+        android:layout_marginStart="60dp"
+        android:layout_marginBottom="32dp"
+        android:layout_weight="4"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toTopOf="@+id/startTimeTodayLinear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/date_today_fragment">
+
+        <CheckBox
+            android:id="@+id/checkBox"
+            android:layout_width="12dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/checkResiduePaidHolidays" />
+
+        <CheckBox
+            android:id="@+id/checkBox2"
+            android:layout_width="12dp"
+            android:layout_height="wrap_content"
+            android:layout_weight="1"
+            android:text="@string/checkCompensatoryDayOff" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/startTimeTodayLinear"
+        android:layout_width="100dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="56dp"
+        android:background="@drawable/view_frame"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/date_today_fragment"
+        app:layout_constraintStart_toStartOf="parent">
+
+        <TextView
+            android:id="@+id/dispStartTimeToday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/view_frameandbackground"
+            android:text="@string/dispStartTimeToday"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/valueStartTimeToday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/view_frame" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/endTimeTodayLinear"
+        android:layout_width="100dp"
+        android:layout_height="38dp"
+        android:layout_marginEnd="56dp"
+        android:background="@drawable/view_frame"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="@+id/date_today_fragment"
+        app:layout_constraintEnd_toEndOf="parent">
+
+        <TextView
+            android:id="@+id/dispEneTimeToday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/view_frameandbackground"
+            android:text="@string/dispEndTimeToday"
+            android:textColor="#FFFFFF" />
+
+        <TextView
+            android:id="@+id/valueEndTimeToday"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@drawable/view_frame" />
+    </LinearLayout>
+
+    <include layout="@layout/activity_work_time" android:id="@+id/work_time_fragment"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>
