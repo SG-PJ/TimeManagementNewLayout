@@ -27,6 +27,9 @@ class InputActivity : AppCompatActivity() {
             val email = findViewById<EditText>(R.id.emailEditText).text.toString()
             val pass = findViewById<EditText>(R.id.editPassword).text.toString()
 
+//            val intent = Intent(this, MainActivity::class.java)
+//            startActivity(intent)
+
             if (email.isNotBlank() && pass.isNotBlank()) {
 
                 auth.signInWithEmailAndPassword(email, pass)
@@ -43,6 +46,12 @@ class InputActivity : AppCompatActivity() {
 
                         }
                     }
+            } else if (email.isBlank()) {
+                Toast.makeText(baseContext, "メールアドレスを入力して下さい", Toast.LENGTH_SHORT).show()
+
+            } else if (pass.isBlank()) {
+                Toast.makeText(baseContext, "パスワードを入力して下さい", Toast.LENGTH_SHORT).show()
+
             }
         }
     }

@@ -5,14 +5,14 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include layout="@layout/activity_date" android:id="@+id/date_today_fragment"/>
+    <include android:id="@+id/date_home_fragment" layout="@layout/activity_name"/>
+    <include android:id="@+id/date_today_fragment" layout="@layout/activity_date"/>
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="140dp"
         android:layout_height="18dp"
         android:layout_marginStart="60dp"
-        android:layout_marginBottom="32dp"
         android:layout_weight="4"
         android:orientation="horizontal"
         app:layout_constraintBottom_toTopOf="@+id/startTimeTodayLinear"
@@ -43,7 +43,8 @@
         android:background="@drawable/view_frame"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/date_today_fragment"
-        app:layout_constraintStart_toStartOf="parent">
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/dispStartTimeToday"
@@ -68,7 +69,9 @@
         android:background="@drawable/view_frame"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/date_today_fragment"
-        app:layout_constraintEnd_toEndOf="parent">
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/startTimeTodayLinear"
+        app:layout_constraintTop_toTopOf="parent">
 
         <TextView
             android:id="@+id/dispEneTimeToday"
@@ -86,5 +89,19 @@
     </LinearLayout>
 
     <include layout="@layout/activity_work_time" android:id="@+id/work_time_fragment"/>
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
+        android:id="@+id/editWorkTime"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        android:clickable="true"
+        android:focusable="true"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.752"
+        app:layout_constraintStart_toStartOf="parent"
+        app:srcCompat="@android:drawable/ic_menu_add" />
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

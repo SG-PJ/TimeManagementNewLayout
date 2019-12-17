@@ -5,9 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <include
-        android:id="@+id/date_home_fragment"
-        layout="@layout/activity_date" />
+    <include android:id="@+id/date_home_fragment" layout="@layout/activity_name" />
+    <include android:id="@+id/date_home_fragment" layout="@layout/activity_date" />
 
     <LinearLayout
         android:id="@+id/linearLayout"
