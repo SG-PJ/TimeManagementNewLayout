@@ -10,6 +10,8 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import com.google.android.material.floatingactionbutton.FloatingActionButton
 import jp.vipsoft.timemanagement.util.FormatUtil
+import com.google.firebase.database.FirebaseDatabase
+import com.google.firebase.auth.FirebaseAuth
 
 class TodayFragment : Fragment() {
 
@@ -23,6 +25,36 @@ class TodayFragment : Fragment() {
         todayViewModel =
             ViewModelProviders.of(this).get(TodayViewModel::class.java)
         val root = inflater.inflate(jp.vipsoft.timemanagement.R.layout.fragment_today, container, false)
+        val auth = FirebaseAuth.getInstance()
+
+        // ログイン中ユーザ
+        var user = auth.currentUser
+
+        if (user != null) {
+
+            // DisplayNameがGUIで設定できないのでここでUpdate
+            // 全員分を設定したら不要な処理
+            /**
+            val profileUpdates = UserProfileChangeRequest.Builder()
+                .setDisplayName("大堂 隼人")
+                .build()
+            user?.updateProfile(profileUpdates)
+                ?.addOnCompleteListener { task ->
+                }
+            */
+
+            // 表示名(画面上部表示用)
+            val name = user.displayName
+
+            // ユーザID(DBのクエリ用)
+            val uid = user.uid
+        }
+
+        val database = FirebaseDatabase.getInstance()
+        //val myRef = database.getReference("message")
+
+        // TODO DBから、ログイン中ユーザ、本日日付のデータを取得
+
 
         //FAB処理
         val editWorkTimebtn = root.findViewById<FloatingActionButton>(jp.vipsoft.timemanagement.R.id.editWorkTime)
