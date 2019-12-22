@@ -8,38 +8,14 @@
     <include android:id="@+id/date_home_fragment" layout="@layout/activity_name"/>
     <include android:id="@+id/date_today_fragment" layout="@layout/activity_date"/>
 
-    <LinearLayout
-        android:id="@+id/linearLayout2"
-        android:layout_width="140dp"
-        android:layout_height="18dp"
-        android:layout_marginStart="60dp"
-        android:layout_weight="4"
-        android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/startTimeTodayLinear"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/date_today_fragment">
 
-        <CheckBox
-            android:id="@+id/checkBox"
-            android:layout_width="12dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/checkResiduePaidHolidays" />
-
-        <CheckBox
-            android:id="@+id/checkBox2"
-            android:layout_width="12dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:text="@string/checkCompensatoryDayOff" />
-
-    </LinearLayout>
 
     <LinearLayout
         android:id="@+id/startTimeTodayLinear"
-        android:layout_width="100dp"
-        android:layout_height="38dp"
+        android:layout_width="110dp"
+        android:layout_height="72dp"
         android:layout_marginStart="56dp"
+        android:layout_marginTop="64dp"
         android:background="@drawable/view_frame"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/date_today_fragment"
@@ -49,23 +25,25 @@
         <TextView
             android:id="@+id/dispStartTimeToday"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:background="@drawable/view_frameandbackground"
             android:text="@string/dispStartTimeToday"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/valueStartTimeToday"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:background="@drawable/view_frame" />
     </LinearLayout>
 
     <LinearLayout
         android:id="@+id/endTimeTodayLinear"
-        android:layout_width="100dp"
-        android:layout_height="38dp"
-        android:layout_marginEnd="56dp"
+        android:layout_width="110dp"
+        android:layout_height="72dp"
+        android:layout_marginTop="64dp"
+        android:layout_marginEnd="36dp"
         android:background="@drawable/view_frame"
         android:orientation="vertical"
         app:layout_constraintBottom_toBottomOf="@+id/date_today_fragment"
@@ -76,15 +54,16 @@
         <TextView
             android:id="@+id/dispEneTimeToday"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:background="@drawable/view_frameandbackground"
             android:text="@string/dispEndTimeToday"
-            android:textColor="#FFFFFF" />
+            android:textColor="#FFFFFF"
+            android:textSize="24sp" />
 
         <TextView
             android:id="@+id/valueEndTimeToday"
             android:layout_width="match_parent"
-            android:layout_height="wrap_content"
+            android:layout_height="36dp"
             android:background="@drawable/view_frame" />
     </LinearLayout>
 
@@ -94,14 +73,56 @@
         android:id="@+id/editWorkTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="96dp"
+        android:layout_marginBottom="72dp"
         android:clickable="true"
         android:focusable="true"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.752"
+        app:layout_constraintHorizontal_bias="0.904"
         app:layout_constraintStart_toStartOf="parent"
         app:srcCompat="@android:drawable/ic_menu_add" />
+
+    <ImageView
+        android:id="@+id/checkResiduePaidHolidays"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/startTimeTodayLinear"
+        app:layout_constraintEnd_toStartOf="@+id/checkResiduePaidHolidaysTextView"
+        app:srcCompat="@drawable/ic_check_box_black_24dp" />
+
+    <TextView
+        android:id="@+id/checkResiduePaidHolidaysTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="80dp"
+        android:layout_marginBottom="16dp"
+        android:text="@string/checkResiduePaidHolidays"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/startTimeTodayLinear"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="@+id/date_home_fragment"
+        app:layout_constraintVertical_bias="1.0" />
+
+    <ImageView
+        android:id="@+id/checkCompensatoryDayOff"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="32dp"
+        android:layout_marginBottom="20dp"
+        app:layout_constraintBottom_toTopOf="@+id/startTimeTodayLinear"
+        app:layout_constraintStart_toEndOf="@+id/checkResiduePaidHolidaysTextView"
+        app:srcCompat="@drawable/ic_check_box_black_24dp" />
+
+    <TextView
+        android:id="@+id/checkCompensatoryDayOffTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="16dp"
+        android:text="@string/checkCompensatoryDayOff"
+        android:textSize="24sp"
+        app:layout_constraintBottom_toTopOf="@+id/startTimeTodayLinear"
+        app:layout_constraintStart_toEndOf="@+id/checkCompensatoryDayOff" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

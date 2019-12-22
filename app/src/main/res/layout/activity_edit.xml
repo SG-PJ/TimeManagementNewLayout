@@ -7,76 +7,76 @@
     tools:context=".MainActivity">
 
     <EditText
-        android:id="@+id/editPassword"
+        android:id="@+id/endWorkTimeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="268dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:importantForAutofill="no"
-        android:inputType="textPassword"
-        android:labelFor="@id/editPassword"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:inputType="datetime"
+        android:labelFor="@id/endWorkTimeEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.671"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/startWorkTimeEditText" />
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/startWorkTimeEditText"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="32dp"
+        android:layout_marginTop="32dp"
         android:ems="10"
         android:importantForAutofill="no"
-        android:inputType="textEmailAddress"
-        android:labelFor="@id/emailEditText"
-        app:layout_constraintBottom_toTopOf="@+id/editPassword"
+        android:inputType="time"
+        android:labelFor="@id/startWorkTimeEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.671"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <TextView
-        android:id="@+id/dispEmail"
+        android:id="@+id/dispWorkTimeStart"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="56dp"
+        android:layout_marginTop="46dp"
         android:text="@string/dispStartTimeToday"
-        app:layout_constraintBottom_toTopOf="@+id/dispPassword"
-        app:layout_constraintEnd_toStartOf="@+id/emailEditText"
-        app:layout_constraintHorizontal_bias="0.606"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintEnd_toStartOf="@+id/startWorkTimeEditText"
+        app:layout_constraintHorizontal_bias="0.647"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
     <TextView
-        android:id="@+id/dispPassword"
+        android:id="@+id/dispEndWorkTime"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="280dp"
+        android:layout_marginTop="59dp"
         android:text="@string/dispEndTimeToday"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toStartOf="@+id/editPassword"
+        app:layout_constraintEnd_toStartOf="@+id/endWorkTimeEditText"
         app:layout_constraintHorizontal_bias="0.647"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dispWorkTimeStart" />
 
     <LinearLayout
         android:id="@+id/linearLayout2"
         android:layout_width="140dp"
         android:layout_height="18dp"
+        android:layout_marginTop="32dp"
         android:layout_weight="4"
         android:orientation="horizontal"
-        app:layout_constraintBottom_toTopOf="@+id/emailEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.3"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
         <CheckBox
-            android:id="@+id/checkBox"
+            android:id="@+id/checkYuukyu"
             android:layout_width="12dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
             android:text="@string/checkResiduePaidHolidays" />
 
         <CheckBox
-            android:id="@+id/checkBox2"
+            android:id="@+id/checkDaikyu"
             android:layout_width="12dp"
             android:layout_height="wrap_content"
             android:layout_weight="1"
