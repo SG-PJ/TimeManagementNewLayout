@@ -6,9 +6,11 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
+import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
 import jp.vipsoft.timemanagement.R
+import jp.vipsoft.timemanagement.util.FormatUtil
 import java.util.*
 
 
@@ -33,19 +35,36 @@ class CalendarFragment : Fragment() {
         val calView = root.findViewById<CalendarView>(R.id.Viewcalendar)
         calView.setDate(toDay, true, true)
         calView.setOnDateChangeListener { view, year, month, dayOfMonth ->
-            val inputView = layoutInflater.inflate(R.layout.activity_edit, null)
+            val inputView = layoutInflater.inflate(R.layout.activity_detail, null)
             val dialog = AlertDialog.Builder(context)
                 .setTitle("勤怠入力")
                 .setView(inputView)
-                .setPositiveButton("OK", { dialog, which ->
-                    // TODO:Yesが押された時の挙動
+                .setPositiveButton("編集", { dialog, which ->
+                    // TODO:登録が押された時の挙動
+                    val inputView = layoutInflater.inflate(R.layout.activity_edit, null)
+                    val dialog = AlertDialog.Builder(context)
+                        .setTitle("勤怠入力")
+                        .setView(inputView)
+                        .setPositiveButton("登録", { dialog, which ->
+                            // TODO:登録が押された時の挙動
+                        })
+                        .setNegativeButton("閉じる", { dialog, which ->
+                            // TODO:閉じるが押された時の挙動
+                        })
+                        .create()
+                    dialog.show()
                 })
-                .setNegativeButton("No", { dialog, which ->
-                    // TODO:Noが押された時の挙動
+                .setNegativeButton("閉じる", { dialog, which ->
+                    // TODO:閉じるが押された時の挙動
                 })
                 .create()
             dialog.show()
         }
+
+        val format = FormatUtil()
+        val userName: TextView = root.findViewById(R.id.nameViewText)
+        userName.text = format.getName()
+
         return root
     }
 }

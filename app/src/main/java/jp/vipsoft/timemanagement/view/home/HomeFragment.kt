@@ -7,7 +7,6 @@ import android.view.ViewGroup
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
-import jp.vipsoft.timemanagement.R
 import jp.vipsoft.timemanagement.util.FormatUtil
 
 class HomeFragment : Fragment() {
@@ -21,13 +20,15 @@ class HomeFragment : Fragment() {
     ): View? {
         homeViewModel =
             ViewModelProviders.of(this).get(HomeViewModel::class.java)
-        val root = inflater.inflate(R.layout.fragment_home, container, false)
+        val root = inflater.inflate(jp.vipsoft.timemanagement.R.layout.fragment_home, container, false)
 
         val format = FormatUtil()
-        val date: TextView = root.findViewById(R.id.txtTime)
+        val date: TextView = root.findViewById(jp.vipsoft.timemanagement.R.id.txtTime)
         date.text = format.getTiem()
-        val time: TextView = root.findViewById(R.id.txtDate)
+        val time: TextView = root.findViewById(jp.vipsoft.timemanagement.R.id.txtDate)
         time.text = format.getDate()
+        val userName: TextView = root.findViewById(jp.vipsoft.timemanagement.R.id.nameViewText)
+        userName.text = format.getName()
 
         return root
     }

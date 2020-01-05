@@ -9,6 +9,7 @@ import androidx.fragment.app.Fragment
 import androidx.lifecycle.Observer
 import androidx.lifecycle.ViewModelProviders
 import jp.vipsoft.timemanagement.R
+import jp.vipsoft.timemanagement.util.FormatUtil
 
 class SettingFragment : Fragment() {
 
@@ -26,6 +27,11 @@ class SettingFragment : Fragment() {
         settingViewModel.text.observe(this, Observer {
             textView.text = it
         })
+
+        val format = FormatUtil()
+        val userName: TextView = root.findViewById(R.id.nameViewText)
+        userName.text = format.getName()
+
         return root
     }
 }

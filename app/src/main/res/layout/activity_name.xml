@@ -13,7 +13,6 @@
         android:gravity="end"
         android:paddingStart="0dp"
         android:paddingEnd="20dp"
-        android:text="山田太郎"
         android:textColor="#FFFFFF"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

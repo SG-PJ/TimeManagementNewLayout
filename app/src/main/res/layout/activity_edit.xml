@@ -13,7 +13,7 @@
         android:layout_marginTop="32dp"
         android:ems="10"
         android:importantForAutofill="no"
-        android:inputType="datetime"
+        android:inputType="time"
         android:labelFor="@id/endWorkTimeEditText"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.671"
