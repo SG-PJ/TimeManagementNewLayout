@@ -33,12 +33,14 @@ class FormatUtil {
 
             // DisplayNameがGUIで設定できないのでここでUpdate
             // 全員分を設定したら不要な処理
+            /**
             val profileUpdates = UserProfileChangeRequest.Builder()
-                .setDisplayName("竹内靖晃")
+                .setDisplayName("大堂隼人")
                 .build()
             user?.updateProfile(profileUpdates)
                 ?.addOnCompleteListener { task ->
                 }
+             */
 
             // 表示名(画面上部表示用)
             val name = user.displayName
