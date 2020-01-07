@@ -1,7 +1,9 @@
 package jp.vipsoft.timemanagement.view.today
 
 import android.app.AlertDialog
+import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
@@ -19,6 +21,7 @@ import com.google.firebase.auth.UserProfileChangeRequest
 import com.google.firebase.database.DataSnapshot
 import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
+import com.google.firebase.firestore.FirebaseFirestore
 import jp.vipsoft.timemanagement.R
 
 class TodayFragment : Fragment() {
@@ -72,6 +75,18 @@ class TodayFragment : Fragment() {
             val textYukyu: TextView = root.findViewById(R.id.checkCompensatoryDayOffTextView)
             textYukyu.visibility = INVISIBLE
         }
+
+        val db = FirebaseFirestore.getInstance()
+        db.collection("user")
+            .get()
+            .addOnSuccessListener { result ->
+                for (document in result) {
+                    Log.d(TAG, "${document.id} => ${document.data}")
+                }
+            }
+            .addOnFailureListener { exception ->
+                Log.w(TAG, "Error getting documents.", exception)
+            }
 
         val format = FormatUtil()
         val date: TextView = root.findViewById(R.id.txtTime)
