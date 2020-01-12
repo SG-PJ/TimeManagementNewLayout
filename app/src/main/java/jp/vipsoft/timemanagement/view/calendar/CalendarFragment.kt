@@ -6,6 +6,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.CalendarView
+import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
@@ -26,6 +27,7 @@ class CalendarFragment : Fragment() {
         calendarViewModel =
             ViewModelProviders.of(this).get(CalendarViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_calendar, container, false)
+        val format = FormatUtil()
 //        val textView: TextView = root.findViewById(R.id.text_calendar)
 //        calendarViewModel.text.observe(this, Observer {
 //            textView.text = it
@@ -51,8 +53,23 @@ class CalendarFragment : Fragment() {
                         .setNegativeButton("閉じる", { dialog, which ->
                             // TODO:閉じるが押された時の挙動
                         })
+                        .setNeutralButton("現在時刻", { dialog, which ->
+                            // TODO:現在時刻が押された時の挙動
+                        })
                         .create()
                     dialog.show()
+                    dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener {
+                        val startTime: EditText = inputView.findViewById(R.id.startWorkTimeEditText)
+                        val endTime: EditText = inputView.findViewById(R.id.endWorkTimeEditText)
+                        val currentTime: String = format.getInputCurrentTime()
+
+                        if (startTime.hasFocus()) {
+                            startTime.setText(currentTime)
+                        }
+                        if (endTime.hasFocus()) {
+                            endTime.setText(currentTime)
+                        }
+                    }
                 })
                 .setNegativeButton("閉じる", { dialog, which ->
                     // TODO:閉じるが押された時の挙動
@@ -61,7 +78,6 @@ class CalendarFragment : Fragment() {
             dialog.show()
         }
 
-        val format = FormatUtil()
         val userName: TextView = root.findViewById(R.id.nameViewText)
         userName.text = format.getName()
 

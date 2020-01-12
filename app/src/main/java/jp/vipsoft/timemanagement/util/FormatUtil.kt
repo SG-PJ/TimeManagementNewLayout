@@ -52,4 +52,25 @@ class FormatUtil {
         }
         return "test"
     }
+
+    fun getInputCurrentTime() : String {
+
+        val cal = Calendar.getInstance(TimeZone.getDefault(), Locale.getDefault())
+        var calHour = cal.get(Calendar.HOUR_OF_DAY).toString()
+        var calMin = cal.get(Calendar.MINUTE)
+
+        var min = ""
+        var result = calMin / 15
+        if (result < 1) {
+            min = "00"
+        } else if (result < 2) {
+            min = "15"
+        } else if (result < 3) {
+            min = "30"
+        } else {
+            min = "45"
+        }
+
+        return calHour + ":" + min
+    }
 }

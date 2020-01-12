@@ -3,11 +3,14 @@ package jp.vipsoft.timemanagement.view.today
 import android.app.AlertDialog
 import android.content.ContentValues.TAG
 import android.os.Bundle
+import android.preference.Preference
+import android.preference.PreferenceManager
 import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.View.INVISIBLE
 import android.view.ViewGroup
+import android.widget.EditText
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.TextView
@@ -23,6 +26,7 @@ import com.google.firebase.database.DatabaseError
 import com.google.firebase.database.ValueEventListener
 import com.google.firebase.firestore.FirebaseFirestore
 import jp.vipsoft.timemanagement.R
+import kotlinx.android.synthetic.main.activity_edit.view.*
 
 class TodayFragment : Fragment() {
 
@@ -36,6 +40,7 @@ class TodayFragment : Fragment() {
         todayViewModel =
             ViewModelProviders.of(this).get(TodayViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_today, container, false)
+        val format = FormatUtil()
 
         //FAB処理
         val editWorkTimebtn = root.findViewById<FloatingActionButton>(R.id.editWorkTime)
@@ -45,13 +50,28 @@ class TodayFragment : Fragment() {
                 .setTitle("勤怠入力")
                 .setView(inputView)
                 .setPositiveButton("登録", { dialog, which ->
-                    // TODO:Yesが押された時の挙動
+                    // TODO:登録が押された時の挙動
                 })
                 .setNegativeButton("閉じる", { dialog, which ->
-                    // TODO:Noが押された時の挙動
+                    // TODO:閉じるが押された時の挙動
+                })
+                .setNeutralButton("現在時刻", { dialog, which ->
+                    // TODO:現在時刻が押された時の挙動
                 })
                 .create()
             dialog.show()
+            dialog.getButton(AlertDialog.BUTTON_NEUTRAL).setOnClickListener {
+                val startTime: EditText = inputView.findViewById(R.id.startWorkTimeEditText)
+                val endTime: EditText = inputView.findViewById(R.id.endWorkTimeEditText)
+                val currentTime: String = format.getInputCurrentTime()
+
+                if (startTime.hasFocus()) {
+                    startTime.setText(currentTime)
+                }
+                if (endTime.hasFocus()) {
+                    endTime.setText(currentTime)
+                }
+            }
         }
 
         // 出社時刻の制御
@@ -88,7 +108,7 @@ class TodayFragment : Fragment() {
                 Log.w(TAG, "Error getting documents.", exception)
             }
 
-        val format = FormatUtil()
+//        val format = FormatUtil()
         val date: TextView = root.findViewById(R.id.txtTime)
         date.text = format.getTiem()
         val time: TextView = root.findViewById(R.id.txtDate)
