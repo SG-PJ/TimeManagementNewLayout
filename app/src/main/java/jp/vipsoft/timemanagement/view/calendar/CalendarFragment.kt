@@ -1,7 +1,6 @@
 package jp.vipsoft.timemanagement.view.calendar
 
 import android.app.AlertDialog
-import android.content.ContentValues.TAG
 import android.os.Bundle
 import android.util.Log
 import android.view.LayoutInflater
@@ -12,15 +11,19 @@ import android.widget.EditText
 import android.widget.TextView
 import androidx.fragment.app.Fragment
 import androidx.lifecycle.ViewModelProviders
+import com.google.firebase.auth.FirebaseAuth
 import com.google.firebase.firestore.FirebaseFirestore
 import jp.vipsoft.timemanagement.R
+import jp.vipsoft.timemanagement.dto.PunchIn
+import jp.vipsoft.timemanagement.dto.Users
 import jp.vipsoft.timemanagement.util.FormatUtil
 import java.util.*
 
 class CalendarFragment : Fragment() {
 
     private lateinit var calendarViewModel: CalendarViewModel
-    val db = FirebaseFirestore.getInstance()
+    private val db = FirebaseFirestore.getInstance()
+    private val format = FormatUtil()
 
     override fun onCreateView (
         inflater: LayoutInflater,
@@ -31,8 +34,8 @@ class CalendarFragment : Fragment() {
         calendarViewModel =
             ViewModelProviders.of(this).get(CalendarViewModel::class.java)
         val root = inflater.inflate(R.layout.fragment_calendar, container, false)
-        val format = FormatUtil()
 
+   /**
         // サンプルコピペ　あとで消す
         db.collection("user")
             .get()
@@ -57,6 +60,19 @@ class CalendarFragment : Fragment() {
             .addOnFailureListener { exception ->
                 Log.w(TAG, "Error getting documents: ", exception)
             }
+*/
+
+        // ユーザ情報取得
+        // TODO 毎回取るか持ち回るか
+        val auth = FirebaseAuth.getInstance()
+        val loadUsersDoc = db.collection("users").document(auth.uid.toString())
+        loadUsersDoc.get().addOnSuccessListener { documentSnapshot ->
+            val users = documentSnapshot.toObject(Users::class.java)
+            if (users == null) {
+                // ユーザー情報オブジェクト未作成エラー
+                Log.d("エラー", "ユーザー情報オブジェクトが取得できません。AuthID: ${auth.uid.toString()}")
+            }
+        }
 
         // カレンダー
         val calView = root.findViewById<CalendarView>(R.id.Viewcalendar)
@@ -70,7 +86,7 @@ class CalendarFragment : Fragment() {
             // 詳細表示
             val detailView = layoutInflater.inflate(R.layout.activity_detail, null)
             val dialog = AlertDialog.Builder(context)
-                .setTitle("$year/${month}1/$dayOfMonth")
+                .setTitle("$year/${month + 1}/$dayOfMonth")
                 .setView(detailView)
                 .setPositiveButton("編集") { dialog, which ->
                     val editView = layoutInflater.inflate(R.layout.activity_edit, null)
@@ -100,6 +116,16 @@ class CalendarFragment : Fragment() {
                             endTime.setText(currentTime)
                         }
                     }
+
+                    // 選択日の勤怠情報取得
+                    // TODO 複合クエリ
+                    val loadAttendanceInfo = db.collection("attendance_info").document(auth.uid.toString())
+                    loadAttendanceInfo.get().addOnSuccessListener { documentSnapshot ->
+                        val attendanceInfo = documentSnapshot.toObject(PunchIn::class.java)
+                        if (attendanceInfo == null) {
+                        }
+                    }
+
                 }
                 .setNegativeButton("閉じる", { dialog, which ->
                     // TODO:閉じるが押された時の挙動
