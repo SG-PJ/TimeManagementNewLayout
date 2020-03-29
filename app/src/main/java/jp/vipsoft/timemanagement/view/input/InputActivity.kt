@@ -1,18 +1,19 @@
 package jp.vipsoft.timemanagement.view
 
 import android.content.Intent
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.util.Log
 import android.widget.EditText
 import android.widget.Toast
+import androidx.appcompat.app.AppCompatActivity
 import com.google.android.gms.tasks.Task
-import com.google.firebase.FirebaseApp
 import com.google.firebase.auth.AuthResult
 import com.google.firebase.auth.FirebaseAuth
-import com.google.firebase.auth.FirebaseUser
+import com.google.firebase.firestore.FirebaseFirestore
+import com.google.gson.Gson
 import jp.vipsoft.timemanagement.MainActivity
 import jp.vipsoft.timemanagement.R
+import jp.vipsoft.timemanagement.dto.Users
 import kotlinx.android.synthetic.main.activity_login.*
 
 class InputActivity : AppCompatActivity() {
@@ -38,7 +39,27 @@ class InputActivity : AppCompatActivity() {
                             Log.d("成功", "signInWithEmail:success")
                             Toast.makeText(baseContext, "ログイン成功", Toast.LENGTH_SHORT).show()
                             val intent = Intent(this, MainActivity::class.java)
-                            startActivity(intent)
+
+                            /** ログイン成功時ユーザーIDでDBから取得 */
+                            val db = FirebaseFirestore.getInstance()
+                            val loadUsersDoc = db.collection("users").document(auth.uid.toString())
+                            loadUsersDoc.get().addOnSuccessListener { documentSnapshot ->
+                                val data = documentSnapshot.toObject(Users::class.java)
+                                if (data != null) {
+                                    Log.d("成功", "(｀・ω・´)ユーザーデータ取れた！！！！！！！ ${data}")
+
+                                    /** 一度取得したユーザ情報をGSONを使ってJSON文字列にする */
+                                    val resultData: String = Gson().toJson(data)
+
+                                    // インテントに格納
+                                    intent.putExtra("users", resultData)
+                                    startActivity(intent)
+                                } else {
+                                    Log.d("成功", "(´・ω・`)ユーザーデータ取れなかった")
+                                }
+                            }
+
+
 
                         } else {
                             Toast.makeText(baseContext, "ログイン失敗", Toast.LENGTH_SHORT).show()
